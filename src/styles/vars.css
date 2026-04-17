@@ -1,0 +1,181 @@
+/* Design tokens / CSS variables */
+:root {
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-mono: "SF Mono", SF Mono Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  /* spacing (margins / paddings) */
+  --space-3xs: 0.375rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.625rem;
+  --space-sm: 0.75rem;
+  --space-md: 0.875rem;
+  --space-lg: 1rem;
+  --space-xl: 1.125rem;
+  --space-2xl: 1.25rem;
+  --space-3xl: 1.5rem;
+  --space-4xl: 2rem;
+  --space-5xl: 3rem;
+  --space-6xl: 4rem;
+
+  /* font sizes */
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 0.9375rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.6rem;
+  --font-size-2xl: 2rem;
+
+  /* color palette */
+
+  /* RGB design tokens for easier use in rgba() and filters */
+  --color-dark-rgb: 18, 6, 43;
+  /* #12062B (very dark purple) */
+  --color-dark-2-rgb: 28, 12, 50;
+  /* #1C0C32 (very dark purple variant) */
+  --color-light-rgb: 241, 238, 255;
+  /* #FAF6FF (very light lavender) */
+  --color-light-2-rgb: 253, 251, 255;
+  /* #FDFBFF (almost-white lavender) */
+
+
+  --color-primary-rgb: 139, 92, 246;
+  /* #8b5cf6 */
+  --color-accent-rgb: 102, 16, 242;
+  /* #6610f2 */
+
+  /* slightly darker, muted variant of --color-dark-rgb for better contrast */
+  --color-muted-rgb: 125, 95, 160;
+  /* #7D5FA0 (darker muted purple) */
+  /* slightly darker, muted variant of --color-light-rgb for better contrast */
+  --color-muted-alt-rgb: 213, 179, 255;
+  /* #D5B3FF (darker muted blue-gray) */
+
+  /* slightly purple-tinted border, less saturated than --color-muted-rgb */
+  --color-border-rgb: 140, 125, 145;
+  /* #8C7D91 (purple-gray) */
+
+  --color-success-rgb: 25, 135, 84;
+  /* #198754 */
+  --color-warning-rgb: 255, 193, 7;
+  /* #ffc107 */
+  --color-danger-rgb: 220, 53, 69;
+  /* #dc3545 */
+  --color-info-rgb: 59, 130, 246;
+  /* #3b82f6 */
+
+  --color-dark: rgb(var(--color-dark-rgb));
+  --color-dark-2: rgb(var(--color-dark-2-rgb));
+  --color-light: rgb(var(--color-light-rgb));
+  --color-light-2: rgb(var(--color-light-2-rgb));
+
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-primary-contrast: rgb(var(--color-dark-rgb));
+  --color-accent: rgb(var(--color-accent-rgb));
+  --color-accent-contrast: rgb(var(--color-light-rgb));
+  --color-surface: rgb(var(--color-light-rgb));
+  --color-surface-contrast: rgb(var(--color-dark-rgb));
+  --color-muted: rgb(var(--color-muted-rgb));
+  --color-muted-alt: rgb(var(--color-muted-alt-rgb));
+  --color-border: rgba(var(--color-border-rgb), 0.5);
+
+  --color-success: rgb(var(--color-success-rgb));
+  --color-success-contrast: rgb(var(--color-light-rgb));
+  --color-warning: rgb(var(--color-warning-rgb));
+  --color-warning-contrast: rgb(var(--color-dark-rgb));
+  --color-danger: rgb(var(--color-danger-rgb));
+  --color-danger-contrast: rgb(var(--color-light-rgb));
+  --color-info: rgb(var(--color-info-rgb));
+  --color-info-contrast: rgb(var(--color-light-rgb));
+
+  /* radii & border */
+  --radius-2xs: 0.375rem;
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.125rem;
+  --radius: var(--radius-lg);
+
+  --border-1: 0.0625rem;
+  --border-2: 0.125rem;
+
+  --focus-ring: 0 0 0 3px rgba(13, 110, 253, 0.15);
+
+  --button-height: 40px;
+
+  /* heading size tokens */
+  --heading-1: var(--font-size-2xl);
+  /* 32px */
+  --heading-2: var(--font-size-xl);
+  /* 24px */
+  --heading-3: var(--font-size-lg);
+  /* 20px */
+  --heading-4: var(--font-size-base);
+  /* 16px */
+  --heading-5: var(--font-size-sm);
+  /* 14px */
+  --heading-6: var(--font-size-xs);
+  /* 12px */
+
+  /* default heading spacing */
+  --heading-margin-top: var(--space-md);
+  --heading-margin-bottom: var(--space-xs);
+  --heading-padding-vertical: var(--space-2xs);
+
+  --shadow-0: 0px 3px 1px -2px rgba(0, 0, 0, .2), 0px 2px 2px 0px rgba(0, 0, 0, .14), 0px 1px 5px 0px rgba(0, 0, 0, .12);
+  --shadow-1: 0px 2px 4px -1px rgba(0, 0, 0, .2), 0px 4px 5px 0px rgba(0, 0, 0, .14), 0px 1px 10px 0px rgba(0, 0, 0, .12);
+  --shadow-2: 0px 3px 5px -1px rgba(0, 0, 0, .2), 0px 6px 10px 0px rgba(0, 0, 0, .14), 0px 1px 18px 0px rgba(0, 0, 0, .12);
+  --shadow-3: 0px 5px 5px -3px rgba(0, 0, 0, .2), 0px 8px 10px 1px rgba(0, 0, 0, .14), 0px 3px 14px 2px rgba(0, 0, 0, .12);
+
+  --standard-transition: all 200ms ease;
+}
+
+/* Theme tokens: light defaults, system dark override, and explicit override */
+:root {
+  /* page background (light) */
+  --color-bg: var(--color-light);
+  --color-bg-contrast: var(--color-dark);
+
+  /* convenience aliases used across styles */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --heading-color: var(--color-dark-2);
+  --heading-color-contrast: var(--color-light-2);
+  --text: var(--color-dark);
+  --muted: var(--color-muted);
+  --border: rgba(var(--color-border-rgb), 0.08);
+
+  --color-quote: var(--muted);
+}
+
+/* Respect system dark preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-dark); 
+    --color-bg-contrast: var(--color-light);
+    --bg: var(--color-bg);
+    --color-surface: var(--color-dark); /* deep surface */
+    --color-surface-contrast: var(--color-light); /* text on surface */
+    --heading-color: var(--color-light-2); /* slightly brighter for better contrast on dark bg */
+    --heading-color-contrast: var(--color-dark-2);
+    --text: var(--color-light);
+    --muted: var(--color-muted-alt);
+    --border: rgba(255,255,255,0.06);
+  }
+}
+
+/* Explicit JS-controlled override (higher specificity) */
+:root[data-theme="dark"] {
+  --color-bg: var(--color-dark);
+  --color-bg-contrast: var(--color-light);
+  --bg: var(--color-bg);
+  --color-surface: var(--color-dark);
+  --color-surface-contrast: var(--color-light);
+  --heading-color: var(--color-light-2);
+  --text: var(--color-light);
+  --muted: var(--color-muted-alt);
+  --border: rgba(255,255,255,0.06);
+  --heading-color-contrast: var(--color-dark-2);
+}

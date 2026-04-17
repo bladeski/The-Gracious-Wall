@@ -1,0 +1,88 @@
+@import url("vars.css");
+@import url("base.css");
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {  
+  background-color: var(--color-bg);
+}
+
+.content-wrapper {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  gap: var(--space-md);
+  color: var(--color-bg-contrast);
+
+  display: grid;
+  grid-template-columns:
+    [inline-start]
+    auto
+    [margin-start]
+    minmax(0, 10%)
+    [main-start]
+    minmax(30rem, 900px)
+    [main-end]
+    minmax(0, 10%)
+    [margin-end]
+    auto
+    [inline-end];
+  grid-template-rows: min-content auto min-content;
+  :where(&) > * {
+    grid-column: main;
+  }
+}
+
+header {
+  display: grid;
+  grid-column: inline;
+  grid-template-columns: subgrid;
+  background-color: var(--heading-color);
+  color: var(--heading-color-contrast);
+  padding: var(--space-2xl) 0;
+
+  .logo {
+    grid-column: main;
+    font-size: var(--font-size-2xl);
+    font-weight: 900;
+    color: var(--heading-color-contrast);
+    width: fit-content;
+
+    &:hover {
+      color: var(--color-accent);
+      border: none;
+    }
+  }
+}
+
+footer {
+  display: grid;
+  grid-column: inline;
+  grid-template-columns: subgrid;
+
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-2xl);
+  background-color: var(--color-surface-contrast);
+  color: var(--color-surface);
+  
+  .links {
+    grid-column: main;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+  }
+
+  .copyright {
+    opacity: 0.75;
+    grid-column: margin;
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+}

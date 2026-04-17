@@ -1,0 +1,20 @@
+mixin head(title)
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0")
+      title= title + ' : The Gracious Wall'
+      link(rel="stylesheet" href=basePath + 'styles/styles.css')
+
+mixin page(title)
+  +head(title)
+  body
+    header
+      h1= title
+    main
+      block content
+
+mixin entry(title, href)
+  li
+    a(href=href)= title

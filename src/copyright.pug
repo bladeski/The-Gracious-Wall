@@ -1,0 +1,11 @@
+extends template.pug
+include mixins.pug
+block vars
+  - var title = 'Copyright Notice'
+  - var basePath = './'
+
+block content
+  :markdown-it
+    **Last updated: 2026/04/17**
+
+    All content on this website—including text, images, graphics, videos, design elements, and other materials—is protected by copyright and other intellectual property laws. No part of this website may be copied, reproduced, distributed, republished, downloaded, displayed, posted, or transmitted in any form or by any means without prior written permission from the copyright owner.You may view the content for personal, non‑commercial use only. Any unauthorized use of the content may violate copyright, trademark, and other applicable laws.

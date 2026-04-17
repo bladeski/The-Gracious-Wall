@@ -1,0 +1,12 @@
+extends template.pug
+include mixins.pug
+block vars
+  - var title = 'Contents'
+  - var basePath = './'
+
+block content
+  include entries.pug
+  nav
+    ul.diary-entries
+      each entry in entries
+        +entry(entry.title, './entries/' + entry.id + '.pug')
