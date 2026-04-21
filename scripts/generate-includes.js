@@ -89,10 +89,11 @@ for (const dir of charDirs) {
     'utf8'
   );
 
-  // {name}.pug entry point — 3 levels deep from src/, so basePath = '../../../'
+  // {name}.pug entry point — lives at src/characters/{name}.pug so Parcel outputs dist/characters/{name}.html
+  // Supporting files remain in .generated/; paths are relative to src/characters/
   fs.writeFileSync(
-    path.join(genDir, `${dir}.pug`),
-    `extends ../../../templates/character.pug\nblock vars\n  - var title = '${name}'\n  - var basePath = '../../../'\nblock content\n  include entries.pug\n  each entry in entries\n    h2(id=entry.id)= entry.title\n    include entry-markdown-includes.pug\n`,
+    path.join(charsDir, `${dir}.pug`),
+    `extends ../templates/character.pug\nblock vars\n  - var title = '${name}'\n  - var basePath = '../'\nblock content\n  include ../.generated/characters/${dir}/entries.pug\n  each entry in entries\n    h2(id=entry.id)= entry.title\n    include ../.generated/characters/${dir}/entry-markdown-includes.pug\n`,
     'utf8'
   );
 
