@@ -39,10 +39,10 @@
   /* #FDFBFF (almost-white lavender) */
 
 
-  --color-primary-rgb: 139, 92, 246;
-  /* #8b5cf6 */
-  --color-accent-rgb: 102, 16, 242;
-  /* #6610f2 */
+  --color-primary-rgb: 162, 89, 255;
+  /* #a259ff */
+  --color-accent-rgb: 124, 58, 237;
+  /* #7c3aed */
 
   /* slightly darker, muted variant of --color-dark-rgb for better contrast */
   --color-muted-rgb: 125, 95, 160;
@@ -73,8 +73,6 @@
   --color-primary-contrast: rgb(var(--color-dark-rgb));
   --color-accent: rgb(var(--color-accent-rgb));
   --color-accent-contrast: rgb(var(--color-light-rgb));
-  --color-surface: rgb(var(--color-light-rgb));
-  --color-surface-contrast: rgb(var(--color-dark-rgb));
   --color-muted: rgb(var(--color-muted-rgb));
   --color-muted-alt: rgb(var(--color-muted-alt-rgb));
   --color-border: rgba(var(--color-border-rgb), 0.5);
@@ -128,54 +126,73 @@
   --shadow-1: 0px 2px 4px -1px rgba(0, 0, 0, .2), 0px 4px 5px 0px rgba(0, 0, 0, .14), 0px 1px 10px 0px rgba(0, 0, 0, .12);
   --shadow-2: 0px 3px 5px -1px rgba(0, 0, 0, .2), 0px 6px 10px 0px rgba(0, 0, 0, .14), 0px 1px 18px 0px rgba(0, 0, 0, .12);
   --shadow-3: 0px 5px 5px -3px rgba(0, 0, 0, .2), 0px 8px 10px 1px rgba(0, 0, 0, .14), 0px 3px 14px 2px rgba(0, 0, 0, .12);
+  --bottom-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
 
   --standard-transition: all 200ms ease;
 }
 
 /* Theme tokens: light defaults, system dark override, and explicit override */
 :root {
-  /* page background (light) */
-  --color-bg: var(--color-light);
-  --color-bg-contrast: var(--color-dark);
-
   /* convenience aliases used across styles */
-  --bg: var(--color-bg);
-  --surface: var(--color-surface);
   --heading-color: var(--color-dark-2);
   --heading-color-contrast: var(--color-light-2);
   --text: var(--color-dark);
   --muted: var(--color-muted);
+  --muted-alt: var(--color-muted-alt);
   --border: rgba(var(--color-border-rgb), 0.08);
 
   --color-quote: var(--muted);
+
+  --surface: var(--color-light);
+  --surface-contrast: var(--color-dark);
+  --surface-2: var(--color-light-2);
+  --surface-contrast-2: var(--color-dark-2);
+
+  --surface-alt: var(--color-dark);
+  --surface-alt-contrast: var(--color-light);
+  --surface-alt-2: var(--color-dark-2);
+  --surface-alt-contrast-2: var(--color-light-2);
 }
 
 /* Respect system dark preference */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: var(--color-dark); 
-    --color-bg-contrast: var(--color-light);
-    --bg: var(--color-bg);
-    --color-surface: var(--color-dark); /* deep surface */
-    --color-surface-contrast: var(--color-light); /* text on surface */
-    --heading-color: var(--color-light-2); /* slightly brighter for better contrast on dark bg */
+    --heading-color: var(--color-light-2);
+    /* slightly brighter for better contrast on dark bg */
     --heading-color-contrast: var(--color-dark-2);
     --text: var(--color-light);
     --muted: var(--color-muted-alt);
-    --border: rgba(255,255,255,0.06);
+    --muted-alt: var(--color-muted);
+    --border: rgba(255, 255, 255, 0.06);
+
+    --surface: var(--color-dark);
+    --surface-contrast: var(--color-light);
+    --surface-2: var(--color-dark-2);
+    --surface-contrast-2: var(--color-light-2);
+
+    --surface-alt: var(--color-light);
+    --surface-alt-contrast: var(--color-dark);
+    --surface-alt-2: var(--color-light-2);
+    --surface-alt-contrast-2: var(--color-dark-2);
   }
 }
 
 /* Explicit JS-controlled override (higher specificity) */
 :root[data-theme="dark"] {
-  --color-bg: var(--color-dark);
-  --color-bg-contrast: var(--color-light);
-  --bg: var(--color-bg);
-  --color-surface: var(--color-dark);
-  --color-surface-contrast: var(--color-light);
   --heading-color: var(--color-light-2);
   --text: var(--color-light);
   --muted: var(--color-muted-alt);
-  --border: rgba(255,255,255,0.06);
+  --muted-alt: var(--color-muted);
+  --border: rgba(255, 255, 255, 0.06);
   --heading-color-contrast: var(--color-dark-2);
+
+  --surface: var(--color-dark);
+  --surface-contrast: var(--color-light);
+  --surface-2: var(--color-dark-2);
+  --surface-contrast-2: var(--color-light-2);
+
+  --surface-alt: var(--color-light);
+  --surface-alt-contrast: var(--color-dark);
+  --surface-alt-2: var(--color-light-2);
+  --surface-alt-contrast-2: var(--color-dark-2);
 }

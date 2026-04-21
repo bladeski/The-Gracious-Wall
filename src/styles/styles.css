@@ -1,41 +1,57 @@
 @import url("vars.css");
 @import url("base.css");
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100vh;
 }
 
-body {  
-  background-color: var(--color-bg);
+body {
+  background-color: var(--surface);
+  color: var(--surface-contrast);
 }
 
 .content-wrapper {
-  height: 100%;
+  min-height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   line-height: 1.6;
   font-size: var(--font-size-base);
   gap: var(--space-md);
-  color: var(--color-bg-contrast);
 
   display: grid;
+  align-items: start;
   grid-template-columns:
-    [inline-start]
-    auto
-    [margin-start]
-    minmax(0, 10%)
-    [main-start]
-    minmax(30rem, 900px)
-    [main-end]
-    minmax(0, 10%)
-    [margin-end]
-    auto
-    [inline-end];
+    [inline-start] auto [margin-start] minmax(0, 15%) [main-start] minmax(30rem, 900px) [main-end] minmax(0, 15%) [margin-end] auto [inline-end];
   grid-template-rows: min-content auto min-content;
-  :where(&) > * {
+
+  :where(&)>* {
     grid-column: main;
+  }
+
+  --heading-top-margin: var(--space-2xl);
+  --heading-top-padding: 15px;
+
+  h1 {
+    margin-top: var(--heading-top-margin);
+    display: grid;
+    grid-column: margin-start;
+    position: sticky;
+    top: 0;
+    text-align: right;
+  }
+
+  h2 {
+    position: sticky;
+    top: 0;
+    margin-top: var(--heading-top-margin);
+    padding-top: var(--heading-top-padding);
+    display: flex;
+    width: 100%;
+    background-color: var(--surface);
+    border-bottom: var(--border-1) solid var(--color-border);
   }
 }
 
@@ -43,8 +59,6 @@ header {
   display: grid;
   grid-column: inline;
   grid-template-columns: subgrid;
-  background-color: var(--heading-color);
-  color: var(--heading-color-contrast);
   padding: var(--space-2xl) 0;
 
   .logo {
@@ -53,11 +67,22 @@ header {
     font-weight: 900;
     color: var(--heading-color-contrast);
     width: fit-content;
+    border: none;
 
     &:hover {
       color: var(--color-accent);
-      border: none;
     }
+  }
+}
+
+.back-link {
+  display: inline-block;
+  justify-self: end;
+  font-size: var(--font-size-sm);
+  width: max-content;
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
 
@@ -67,22 +92,25 @@ footer {
   grid-template-columns: subgrid;
 
   margin-top: var(--space-2xl);
-  padding-top: var(--space-2xl);
-  background-color: var(--color-surface-contrast);
-  color: var(--color-surface);
-  
-  .links {
-    grid-column: main;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: var(--space-lg);
-  }
+  padding: var(--space-2xl) 0;
+  font-size: var(--font-size-xs);
 
-  .copyright {
-    opacity: 0.75;
-    grid-column: margin;
-    font-size: var(--font-size-sm);
-    text-align: center;
+  .wrapper {
+    grid-column: main;
+    display: flex;
+
+    .links {
+      flex-grow: 1;
+      text-align: center;
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .copyright {
+      opacity: 0.75;
+      grid-column: main;
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }

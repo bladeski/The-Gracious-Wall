@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx scan-compromised",
+    "generate": "node scripts/generate-includes.js",
+    "predev": "node scripts/generate-includes.js",
     "dev": "parcel src/index.pug",
+    "prebuild": "node scripts/generate-includes.js",
     "build": "parcel build"
   },
   "devDependencies": {

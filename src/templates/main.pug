@@ -1,0 +1,24 @@
+include ../mixins/mixins.pug
+block vars
+  - var title = 'Diary'
+  - var basePath = './'
+  - var isHome = false
++head(title)
+body
+  .content-wrapper
+    header.inverse
+      a.logo(href=basePath + 'index.pug') The Gracious Wall
+    h1= title
+    main
+      block content
+    block footer 
+      if !isHome
+        a.back-link(href=basePath + 'index.pug') ⇽ Back to Contents
+      footer.inverse 
+        .wrapper
+          .links
+            a(href=basePath + 'copyright.pug') Copyright Notice
+            a(href=basePath + 'terms.pug') Terms of Use 
+          .copyright
+            | © 2026 Jonathan Blades. All rights reserved.
+          

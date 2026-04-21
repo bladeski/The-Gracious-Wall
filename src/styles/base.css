@@ -85,6 +85,7 @@ h6,
 
 a {
   color: var(--color-accent);
+  border-bottom: var(--border-1) solid transparent;
 
   &:hover {
     border-bottom: var(--border-1) solid;
@@ -104,8 +105,8 @@ button {
   padding: calc(var(--space-sm) - 2px) var(--space-md);
   border-radius: var(--radius-sm);
   border: var(--border-1) solid var(--border);
-  background: var(--color-surface-contrast);
-  color: var(--color-surface);
+  background: var(--surface-alt);
+  color: var(--surface-alt-contrast);
   height: var(--button-height);
   transition: var(--standard-transition);
 
@@ -339,11 +340,11 @@ details {
     font-family: var(--font-family);
     font-size: var(--font-size-xs);
     font-weight: 400;
-    background: var(--color-surface-contrast);
+    background: var(--surface-alt);
     border: var(--border-1) solid var(--color-tile-border, rgba(255, 255, 255, 0.12));
     border-radius: var(--radius-sm);
     padding: var(--space-3xs) var(--space-sm);
-    color: var(--color-surface, rgb(229, 231, 235));
+    color: var(--surface-alt-contrast, rgb(229, 231, 235));
     white-space: normal;
     width: max-content;
     line-height: 1.5;
@@ -401,12 +402,24 @@ q {
 code {
   display: block;
   font-family: var(--font-family-mono);
-  background-color: var(--color-surface-contrast);
-  color: var(--color-surface);
+  background-color: var(--surface-alt);
+  color: var(--surface-alt-contrast);
   margin: var(--space-lg);
   padding: var(--space-md) var(--space-lg);
   border: var(--border-2) solid var(--color-border);
   border-radius: var(--radius-2xs);
+}
+
+.inverse {
+  background-color: var(--surface-alt);
+  color: var(--surface-alt-contrast);
+
+  blockquote,
+  q {
+    &::after {
+      color: var(--muted-alt);
+    }
+  }
 }
 
 /* Screen-reader only helper (visually hidden but accessible) */
