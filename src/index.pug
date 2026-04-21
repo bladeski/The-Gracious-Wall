@@ -12,7 +12,7 @@ block content
       +entry('Prologue', './story/prologue.pug')
       each character in characters
         +entry(character, 'characters/' + character.toLowerCase() + '.pug')
-        ul.diary-entries
+        ol.diary-entries
           include .generated/character-entries-includes.pug
           each entry in entries
             +entry(entry.title, 'characters/' + character.toLowerCase() + '.pug' + '#' + entry.id)

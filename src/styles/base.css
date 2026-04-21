@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
   accent-color: var(--color-accent);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html,
@@ -11,6 +14,15 @@ select,
 textarea {
   font-family: var(--font-family);
   font-size: 18px;
+}
+
+h1, .h1, h2, .h2, h3, .h3,
+h4, .h4, h5, .h5, h6, .h6 {
+  font-family: var(--font-family-ui);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Headings — sizes, comfortable line-height and spacing */

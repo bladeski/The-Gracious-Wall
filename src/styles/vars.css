@@ -1,6 +1,7 @@
 /* Design tokens / CSS variables */
 :root {
-  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-family: 'Lora', Georgia, serif;
+  --font-family-ui: 'Inter', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   --font-family-mono: "SF Mono", SF Mono Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
   /* spacing (margins / paddings) */
@@ -25,35 +26,37 @@
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.6rem;
   --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3.125rem;
+  --font-size-5xl: 4rem;
 
   /* color palette */
 
   /* RGB design tokens for easier use in rgba() and filters */
-  --color-dark-rgb: 18, 6, 43;
-  /* #12062B (very dark purple) */
-  --color-dark-2-rgb: 28, 12, 50;
-  /* #1C0C32 (very dark purple variant) */
-  --color-light-rgb: 241, 238, 255;
-  /* #FAF6FF (very light lavender) */
-  --color-light-2-rgb: 253, 251, 255;
-  /* #FDFBFF (almost-white lavender) */
+  --color-dark-rgb: 10, 18, 34;
+  /* #0A1222 (deep navy) */
+  --color-dark-2-rgb: 15, 26, 48;
+  /* #0F1A30 (navy variant) */
+  --color-light-rgb: 238, 245, 247;
+  /* #EEF5F7 (pale ice blue) */
+  --color-light-2-rgb: 248, 251, 252;
+  /* #F8FBFC (near-white) */
 
+  --color-primary-rgb: 8, 145, 178;
+  /* #0891B2 (bright cyan-teal) */
+  --color-accent-rgb: 14, 116, 144;
+  /* #0E7490 (mid teal) */
 
-  --color-primary-rgb: 162, 89, 255;
-  /* #a259ff */
-  --color-accent-rgb: 124, 58, 237;
-  /* #7c3aed */
+  /* muted teal for light backgrounds */
+  --color-muted-rgb: 74, 122, 138;
+  /* #4A7A8A */
+  /* lighter teal for dark backgrounds */
+  --color-muted-alt-rgb: 126, 200, 216;
+  /* #7EC8D8 */
 
-  /* slightly darker, muted variant of --color-dark-rgb for better contrast */
-  --color-muted-rgb: 125, 95, 160;
-  /* #7D5FA0 (darker muted purple) */
-  /* slightly darker, muted variant of --color-light-rgb for better contrast */
-  --color-muted-alt-rgb: 213, 179, 255;
-  /* #D5B3FF (darker muted blue-gray) */
-
-  /* slightly purple-tinted border, less saturated than --color-muted-rgb */
-  --color-border-rgb: 140, 125, 145;
-  /* #8C7D91 (purple-gray) */
+  /* slate border */
+  --color-border-rgb: 120, 152, 168;
+  /* #7898A8 */
 
   --color-success-rgb: 25, 135, 84;
   /* #198754 */
@@ -139,7 +142,7 @@
   --text: var(--color-dark);
   --muted: var(--color-muted);
   --muted-alt: var(--color-muted-alt);
-  --border: rgba(var(--color-border-rgb), 0.08);
+  --border: rgba(var(--color-border-rgb), 0.25);
 
   --color-quote: var(--muted);
 
@@ -163,7 +166,7 @@
     --text: var(--color-light);
     --muted: var(--color-muted-alt);
     --muted-alt: var(--color-muted);
-    --border: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.18);
 
     --surface: var(--color-dark);
     --surface-contrast: var(--color-light);
@@ -183,7 +186,7 @@
   --text: var(--color-light);
   --muted: var(--color-muted-alt);
   --muted-alt: var(--color-muted);
-  --border: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.18);
   --heading-color-contrast: var(--color-dark-2);
 
   --surface: var(--color-dark);
