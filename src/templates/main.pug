@@ -8,12 +8,14 @@ body
   .content-wrapper
     header.inverse
       a.logo(href=basePath + 'index.pug') The Gracious Wall
-    h1= title
     main
-      block content
+      h1= title
+      section
+        block content
     block footer 
       if !isHome
-        a.back-link(href=basePath + 'index.pug') ⇽ Back to Contents
+        nav
+          a.back-link(href=basePath + 'index.pug') ⇽ Back to Contents
       footer.inverse 
         .wrapper
           .links

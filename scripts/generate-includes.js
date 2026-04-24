@@ -80,7 +80,7 @@ for (const dir of charDirs) {
 
   // entry-markdown-includes.pug
   const mdBlocks = ids.map(id =>
-    `if entry.id === '${id}'\n  include:markdown-it ${id}.md`
+    `if entry.id === '${id}'\n  .entry\n    include:marked ${id}.md`
   ).join('\nelse ');
 
   fs.writeFileSync(

@@ -13,7 +13,10 @@ input,
 select,
 textarea {
   font-family: var(--font-family);
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  word-spacing: 0.03em;
 }
 
 h1, .h1, h2, .h2, h3, .h3,
@@ -382,6 +385,7 @@ blockquote,
 q {
 
   font-style: italic;
+  font-weight: 500;
   color: var(--color-quote);
 }
 
@@ -401,12 +405,10 @@ blockquote {
   }
 }
 
-q {
-  
+q:has([cite]) {
   &::after {
     content: close-quote " (" attr(cite) ")  ";
-    /* font-size: var(--font-size-sm); */
-    
+    font-size: var(--font-size-sm);    
     color: var(--muted);
   }
 }

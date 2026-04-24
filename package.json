@@ -16,6 +16,7 @@
   "devDependencies": {
     "@parcel/transformer-pug": "2.16.4",
     "jstransformer-markdown-it": "^3.0.0",
+    "jstransformer-marked": "^1.4.0",
     "parcel": "^2.16.4",
     "pug": "^3.0.4",
     "typescript": "^6.0.3"

@@ -1268,6 +1268,13 @@ jstransformer-markdown-it@^3.0.0:
   dependencies:
     markdown-it "^13.0.1"
 
+jstransformer-marked@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/jstransformer-marked/-/jstransformer-marked-1.4.0.tgz#a3b0bdd746edf9a5d64376bb2080de02a8f9168a"
+  integrity sha512-Kh/lABa3kxX9p8PQcpVEoDhMNvOYNpMXQWjvf4ZsphW689Lb3hNlvZ9YvlgN11DHktHNnoXJb8/ddiBbuaayzw==
+  dependencies:
+    marked "^4.3.0"
+
 jstransformer@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-1.0.0.tgz#ed8bf0921e2f3f1ed4d5c1a44f68709ed24722c3"
@@ -1385,6 +1392,11 @@ markdown-it@^13.0.1:
     linkify-it "^4.0.1"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
+
+marked@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
+  integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
 
 math-intrinsics@^1.1.0:
   version "1.1.0"

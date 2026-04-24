@@ -24,7 +24,7 @@ body {
   display: grid;
   align-items: start;
   grid-template-columns:
-    [inline-start] auto [margin-start] minmax(0, 15%) [main-start] minmax(30rem, 72ch) [main-end] minmax(0, 15%) [margin-end] auto [inline-end];
+    [inline-start] auto [margin-start] minmax(0, 15%) [main-start] minmax(30rem, 60ch) [main-end] minmax(0, 15%) [margin-end] auto [inline-end];
   grid-template-rows: min-content auto min-content;
 
   :where(&)>* {
@@ -36,22 +36,11 @@ body {
 
   h1 {
     margin-top: var(--heading-top-margin);
-    display: grid;
+    align-self: start;
     grid-column: margin-start;
     position: sticky;
     top: 0;
     text-align: right;
-  }
-
-  /* drop cap on first paragraph following each entry heading */
-  h2 + p::first-letter {
-    font-size: var(--font-size-5xl);
-    font-weight: 700;
-    float: left;
-    line-height: 0.82;
-    margin: 0.06em 0.04em 0 0;
-    color: var(--color-primary);
-    font-family: var(--font-family);
   }
 
   h2 {
@@ -75,7 +64,7 @@ header {
   background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);
 
   .logo {
-    grid-column: main;
+    grid-column: margin;
     font-size: var(--font-size-2xl);
     font-weight: 900;
     font-family: var(--font-family-ui);
@@ -90,11 +79,35 @@ header {
   }
 }
 
+main {  
+  display: grid;
+  grid-column: inline;
+  grid-template-columns: subgrid;
+
+  section {
+    grid-column: main;
+    display: grid;
+  }
+}
+
+.entry {
+  /* drop cap on first paragraph following each entry heading */
+  p:first-child:first-letter {
+    font-size: var(--font-size-5xl);
+    font-weight: 700;
+    float: left;
+    line-height: 0.82;
+    margin: 0.06em 0.04em 0 0;
+    color: var(--color-primary);
+    font-family: var(--font-family);
+  }
+}
+
 .contents {
   list-style: none;
   padding: 0;
 
-  & > li {
+  &>li {
     margin-top: var(--space-xl);
 
     &:first-child {
@@ -102,7 +115,7 @@ header {
     }
   }
 
-  & > li > a {
+  &>li>a {
     font-family: var(--font-family-ui);
     font-weight: 600;
     font-size: var(--font-size-lg);
@@ -136,8 +149,7 @@ header {
     gap: var(--space-3xs);
     border-left: 1px solid var(--border);
 
-    & > li > a {
-      font-size: var(--font-size-sm);
+    &>li>a {
       font-variant-numeric: tabular-nums;
       color: var(--muted);
       border-bottom: none;

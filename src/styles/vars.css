@@ -47,8 +47,8 @@
   --color-accent-rgb: 14, 116, 144;
   /* #0E7490 (mid teal) */
 
-  /* muted teal for light backgrounds */
-  --color-muted-rgb: 74, 122, 138;
+  /* muted teal for light backgrounds (darkened slightly for better contrast) */
+  --color-muted-rgb: 58, 102, 112;
   /* #4A7A8A */
   /* lighter teal for dark backgrounds */
   --color-muted-alt-rgb: 126, 200, 216;
