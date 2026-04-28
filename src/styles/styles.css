@@ -79,7 +79,7 @@ header {
   }
 }
 
-main {  
+main {
   display: grid;
   grid-column: inline;
   grid-template-columns: subgrid;
@@ -91,15 +91,17 @@ main {
 }
 
 .entry {
+
   /* drop cap on first paragraph following each entry heading */
   p:first-child:first-letter {
     font-size: var(--font-size-5xl);
     font-weight: 700;
     float: left;
-    line-height: 0.82;
+    line-height: 0.5;
     margin: 0.06em 0.04em 0 0;
     color: var(--color-primary);
     font-family: var(--font-family);
+    text-shadow: var(--text-shadow);
   }
 }
 
