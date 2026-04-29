@@ -93,7 +93,22 @@ for (const dir of charDirs) {
   // Supporting files remain in .generated/; paths are relative to src/characters/
   fs.writeFileSync(
     path.join(charsDir, `${dir}.pug`),
-    `extends ../templates/character.pug\nblock vars\n  - var title = '${name}'\n  - var basePath = '../'\nblock content\n  include ../.generated/characters/${dir}/entries.pug\n  each entry in entries\n    h2(id=entry.id)= entry.title\n    include ../.generated/characters/${dir}/entry-markdown-includes.pug\n`,
+    `extends ../templates/character.pug
+block vars
+  - var title = '${name}'
+  - var basePath = '../'
+  - var showInPageNav = true
+block nav
+  include ../.generated/characters/${dir}/entries.pug
+  each entry in entries
+    li
+      a(href='#' + entry.id)= entry.title
+block content
+  include ../.generated/characters/${dir}/entries.pug
+  each entry in entries
+    h2(id=entry.id)= entry.title
+    include ../.generated/characters/${dir}/entry-markdown-includes.pug
+`,
     'utf8'
   );
 

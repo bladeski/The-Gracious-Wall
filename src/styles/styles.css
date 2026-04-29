@@ -53,6 +53,16 @@ body {
     background-color: var(--surface);
     border-bottom: var(--border-1) solid var(--color-border);
   }
+
+  nav.page-nav {
+    font-size: var(--font-size-xs);
+    margin-top: var(--heading-top-margin);
+    align-self: start;
+    grid-column: main-end;
+    position: sticky;
+    top: 0;
+    text-align: left;
+  }
 }
 
 header {
@@ -62,6 +72,30 @@ header {
   padding: var(--space-2xl) 0;
   border-top: 3px solid var(--color-primary);
   background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);
+
+  .skip-nav {
+    max-width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-size: var(--font-size-xs);
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &:focus {
+      max-width: 100%;
+      width: max-content;
+      height: auto;
+      padding: var(--space-2xs) var(--space-xs);
+      background-color: var(--color-primary);
+      color: var(--surface);
+    }
+  }
 
   .logo {
     grid-column: margin;
@@ -85,6 +119,9 @@ main {
   grid-template-columns: subgrid;
 
   section {
+    &:first-of-type  {
+      grid-row: 1;
+    }
     grid-column: main;
     display: grid;
   }

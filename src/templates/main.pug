@@ -3,13 +3,20 @@ block vars
   - var title = 'Diary'
   - var basePath = './'
   - var isHome = false
+  - var showInPageNav = false
 +head(title)
 body
   .content-wrapper
     header.inverse
+      a.skip-nav(href="#mainContent") Skip to main content
       a.logo(href=basePath + 'index.pug') The Gracious Wall
-    main
+    main#mainContent
       h1= title
+      if showInPageNav
+        nav.page-nav(aria-labelledby="pageNav")
+          #pageNav On this page:
+          ul
+            block nav
       section
         block content
     block footer 
