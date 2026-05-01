@@ -3,15 +3,25 @@ include ./mixins/mixins.pug
 block vars
   - var title = 'Terms of Use'
   - var basePath = './'
+  - var showInPageNav = true 
+
+block nav 
+  +entry('Acceptance of Terms', '#acceptance-of-terms')
+  +entry('Intellectual Property Rights', '#intellectual-property-rights')
+  +entry('Prohibited Activities', '#prohibited-activities')
+  +entry('User Conduct', '#user-conduct')
+  +entry('Third‑Party Links', '#third-party-links')
+  +entry('Disclaimer of Warranties', '#disclaimer-of-warranties')
+  +entry('Limitation of Liability', '#limitation-of-liability')
+  +entry('Changes to These Terms', '#changes-to-these-terms')
+  +entry('Contact', '#contact')
 
 block content
-  :marked
-    **Last updated: 2026/04/17**
-
-    ## 1. Acceptance of Terms  
+  :markdown-it
+    ## 1. Acceptance of Terms {#acceptance-of-terms}
     By accessing or using this website (the “Site”), you agree to be bound by these Terms of Use. If you do not agree, you must not use the Site.
 
-    ## 2. Intellectual Property Rights  
+    ## 2. Intellectual Property Rights {#intellectual-property-rights}
     All content on this Site—including text, images, graphics, videos, code, and any other materials (“Content”)—is protected by copyright and other intellectual property laws.
 
     Unless explicitly stated otherwise, **all rights are reserved**.
@@ -26,28 +36,31 @@ block content
 
     Any unauthorized use may violate copyright, trademark, and other laws.
 
-    ## 3. Prohibited Activities  
+    ## 3. Prohibited Activities {#prohibited-activities}
     You agree not to:  
     - Copy or store Content for any purpose other than personal viewing.  
     - Circumvent technical measures designed to prevent copying or downloading.  
     - Use the Site in a way that harms, disrupts, or interferes with its operation.  
     - Use the Site or its Content for commercial purposes without permission.
 
-    ## 4. User Conduct  
+    ## 4. User Conduct {#user-conduct}
     You must use the Site in compliance with all applicable laws. You may not use the Site to engage in unlawful, abusive, or harmful behavior.
 
-    ## 5. Third‑Party Links  
+    ## 5. Third‑Party Links {#third-party-links}
     The Site may contain links to third‑party websites. These are provided for convenience only. We are not responsible for the content or practices of third‑party sites.
 
-    ## 6. Disclaimer of Warranties  
+    ## 6. Disclaimer of Warranties {#disclaimer-of-warranties}
     The Site and its Content are provided “as is” without warranties of any kind. We do not guarantee accuracy, completeness, or availability.
 
-    ## 7. Limitation of Liability  
+    ## 7. Limitation of Liability {#limitation-of-liability}
     To the fullest extent permitted by law, we are not liable for any damages arising from your use of the Site or inability to use the Site.
 
-    ## 8. Changes to These Terms  
+    ## 8. Changes to These Terms {#changes-to-these-terms}
     We may update these Terms from time to time. Continued use of the Site after changes are posted constitutes acceptance of the updated Terms.
 
-    ## 9. Contact  
+    **Last updated: 2026/04/17**
+
+    ## 9. Contact {#contact}
     For permissions, questions, or concerns, please contact:  
   a(href='mailto:jonoblades+graciouswalldiary@gmail.com') Jonathan Blades
+

@@ -20,8 +20,8 @@ body
       section
         block content
     block footer 
-      if !isHome
-        nav
+      nav.back-to-contents
+        if !isHome
           a.back-link(href=basePath + 'index.pug') ⇽ Back to Contents
       footer.inverse 
         .wrapper
@@ -30,4 +30,4 @@ body
             a(href=basePath + 'terms.pug') Terms of Use 
           .copyright
             | © 2026 Jonathan Blades. All rights reserved.
-          
+    //- No JS needed for sticky header stacking — CSS handles it

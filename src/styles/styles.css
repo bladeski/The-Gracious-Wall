@@ -1,6 +1,26 @@
 @import url("vars.css");
 @import url("base.css");
 
+/* Page background expressed as a reusable token so headers can match it */
+:root {
+  --page-bg:
+    radial-gradient(800px 400px at 12% 8%, rgba(var(--color-primary-rgb), 0.06), transparent 30%),
+    radial-gradient(700px 350px at 90% 85%, rgba(var(--color-accent-rgb), 0.05), transparent 30%),
+    linear-gradient(180deg, rgba(var(--color-light-rgb), 0.03), rgba(var(--color-muted-rgb), 0.03));
+  --header-overlay-rgb: var(--color-light-rgb);
+}
+
+/* Dark-mode header overlay should use the dark tone */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-overlay-rgb: var(--color-dark-rgb);
+  }
+}
+
+:root[data-theme="dark"] {
+  --header-overlay-rgb: var(--color-dark-rgb);
+}
+
 html,
 body {
   margin: 0;
@@ -8,24 +28,44 @@ body {
   height: 100vh;
 }
 
+html {
+  
+  scroll-timeline: --scroll-progress y;
+  /* Firefox supports the non-standard vertical/horizontal syntax */
+  scroll-timeline: --scroll-progress vertical;
+}
+
 body {
   background-color: var(--surface);
   color: var(--surface-contrast);
+  background-image: var(--page-bg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .content-wrapper {
+
   min-height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   line-height: 1.8;
   font-size: var(--font-size-base);
-  gap: var(--space-md);
+  /* row gap 0 (no vertical space), column gap preserved */
+  gap: 0 var(--space-md);
+
+  /* create a containing block for fixed-position descendants so
+     a fixed pseudo-element can be sized to the viewport but clipped
+     to this parent. This keeps the overlay the size of the window
+     while preventing overflow outside the parent. */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 
   display: grid;
   align-items: start;
   grid-template-columns:
     [inline-start] auto [margin-start] minmax(0, 15%) [main-start] minmax(30rem, 60ch) [main-end] minmax(0, 15%) [margin-end] auto [inline-end];
-  grid-template-rows: min-content auto min-content;
+  grid-template-rows: min-content auto min-content min-content;
 
   :where(&)>* {
     grid-column: main;
@@ -49,14 +89,39 @@ body {
     margin-top: var(--heading-top-margin);
     padding-top: var(--heading-top-padding);
     display: flex;
-    width: 100%;
-    background-color: var(--surface);
+    max-width: 100%;
+    /* Show the same page gradient inside the heading, then overlay
+       a translucent surface color so the header appears semi-opaque
+       but visually continuous with the page background. This hides
+       text scrolling underneath while preserving the gradient look. */
+    background-color: rgb(var(--header-overlay-rgb));
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: padding-box;
+    z-index: 0;
     border-bottom: var(--border-1) solid var(--color-border);
+    position: sticky;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: var(--space-4xl);
+      background-image: linear-gradient(to bottom, transparent 0%, rgba(var(--header-overlay-rgb), 0.9) 1px, rgba(var(--header-overlay-rgb), 0.5) 30%, rgba(var(--header-overlay-rgb), 0.2) 60%, transparent 100%);
+      background-repeat: no-repeat, no-repeat;
+      background-position: center bottom, center bottom;
+      z-index: -1;
+    }
   }
+
 
   nav.page-nav {
     font-size: var(--font-size-xs);
     margin-top: var(--heading-top-margin);
+    padding-top: var(--space-4xl);
     align-self: start;
     grid-column: main-end;
     position: sticky;
@@ -114,16 +179,65 @@ header {
 }
 
 main {
+  position: relative;
   display: grid;
   grid-column: inline;
   grid-template-columns: subgrid;
 
   section {
-    &:first-of-type  {
+    &:first-of-type {
       grid-row: 1;
     }
+
     grid-column: main;
     display: grid;
+  }
+}
+
+nav.back-to-contents {
+  position: sticky;
+  bottom: 0;
+  grid-column: inline-start / inline-end;
+  pointer-events: none;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: subgrid;
+  /* overlay + page gradient so fade visually matches background */
+  background-image: linear-gradient(to top, transparent 0%, rgba(var(--header-overlay-rgb), 0.9) 1px, rgba(var(--header-overlay-rgb), 0.5) 30%, rgba(var(--header-overlay-rgb), 0.2) 60%, transparent 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center bottom, center bottom;
+  /* keep the page gradient fixed like the body, overlay scrolls with element */
+  background-attachment: scroll, fixed;
+  background-size: 100% 100%, cover;
+  align-items: center;
+
+  .back-link {
+    height: max-content;
+    grid-column: margin-start;
+    pointer-events: auto;
+    display: inline-block;
+    justify-self: end;
+    font-size: var(--font-size-sm);
+    width: max-content;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &::after {
+    content: '';
+    height: 1rem;
+    background: var(--color-accent);
+    animation-name: fadein;
+    animation-duration: 5s;
+    top: 0;
+    left: 0;
+    grid-column: inline;
+    animation-timeline: --scroll-progress;
+  }
+
+  div.box {
   }
 }
 
@@ -135,7 +249,7 @@ main {
     font-weight: 700;
     float: left;
     line-height: 0.5;
-    margin: 0.06em 0.04em 0 0;
+    margin: 0.2em 0.04em 0 0;
     color: var(--color-primary);
     font-family: var(--font-family);
     text-shadow: var(--text-shadow);
@@ -200,24 +314,12 @@ main {
   }
 }
 
-.back-link {
-  display: inline-block;
-  justify-self: end;
-  font-size: var(--font-size-sm);
-  width: max-content;
-
-  &:hover {
-    color: var(--color-primary);
-  }
-}
-
 footer {
   display: grid;
   grid-column: inline;
   grid-template-columns: subgrid;
   background: linear-gradient(135deg, var(--color-dark-2) 0%, var(--color-dark) 100%);
 
-  margin-top: var(--space-2xl);
   padding: var(--space-2xl) 0;
   font-size: var(--font-size-xs);
 
@@ -238,5 +340,15 @@ footer {
       display: flex;
       justify-content: flex-end;
     }
+  }
+}
+
+@keyframes fadein {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
   }
 }
